@@ -1,7 +1,9 @@
 {
   "name": "Percival Latian",
   "class":[
-    "artificer;1"
+    "artificer;2",
+    "rogue;3",
+    "fighter;2"
   ],
   "race":"dhampir",
   "stats":{

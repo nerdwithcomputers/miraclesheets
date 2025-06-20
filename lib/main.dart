@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -35,6 +36,13 @@ class HomeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     String char = File('lib/assets/sample-char/main.json').readAsStringSync();
     Map character = jsonDecode(char);
+    String classes = "";
+    var level = 0;
+    for(String entry in character["class"]){
+      var classLevel = entry.split(";");
+      level += int.parse(classLevel[1]);
+      classes += classes.isEmpty ? " ${classLevel[0]}" : "-${classLevel[0]}";
+    }
     return Scaffold(
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -42,14 +50,20 @@ class HomeApp extends StatelessWidget {
           children: [
             Column(
               children: [
-                Statbar(json: character)
+                Statbar(character: character)
               ],
             )
           ],
         )
       ),
       appBar: AppBar(
-        title: Text(character["name"]),
+        title: Row(
+          children: [
+            Text(character["name"]),
+            Text(classes),
+            Text(" ${level.toString()}")
+          ]
+        ),
         actions: [
           ElevatedButton(
             onPressed: (){

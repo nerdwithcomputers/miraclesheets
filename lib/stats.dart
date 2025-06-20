@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Statbar extends StatelessWidget {
-  final Map json;
-  const Statbar({super.key, required this.json});
+  final Map character;
+  const Statbar({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +23,22 @@ class Statbar extends StatelessWidget {
         ),
         Column(
           children: [
-            Modifier(json: json, statName: "int"),
-            Modifier(json: json, statName: "con"),
-            Modifier(json: json, statName: "dex"),
-            Modifier(json: json, statName: "wis"),
-            Modifier(json: json, statName: "cha"),
-            Modifier(json: json, statName: "str")
+            Modifier(character: character, statName: "int"),
+            Modifier(character: character, statName: "con"),
+            Modifier(character: character, statName: "dex"),
+            Modifier(character: character, statName: "wis"),
+            Modifier(character: character, statName: "cha"),
+            Modifier(character: character, statName: "str")
           ]
         ),
         Column(
           children: [
-            Stat(statName: "int", json: json),
-            Stat(statName: "con", json: json),
-            Stat(statName: "dex", json: json),
-            Stat(statName: "wis", json: json),
-            Stat(statName: "cha", json: json),
-            Stat(statName: "str", json: json),
+            Stat(statName: "int", character: character),
+            Stat(statName: "con", character: character),
+            Stat(statName: "dex", character: character),
+            Stat(statName: "wis", character: character),
+            Stat(statName: "cha", character: character),
+            Stat(statName: "str", character: character),
           ],
         ),
       ]
@@ -47,13 +47,13 @@ class Statbar extends StatelessWidget {
 }
 
 class Modifier extends StatelessWidget {
-  final Map json;
+  final Map character;
   final String statName;
-  const Modifier({super.key, required this.json, required this.statName});
+  const Modifier({super.key, required this.character, required this.statName});
 
   @override
   Widget build(BuildContext context) {
-    var mod = ((json["stats"][statName]-10)/2).toInt();
+    var mod = ((character["stats"][statName]-10)/2).toInt();
     var modifier = mod >= 0 ? "+$mod" : "$mod";
     return Container(
       child: Text(modifier),
@@ -64,14 +64,14 @@ class Modifier extends StatelessWidget {
 class Stat extends StatelessWidget {
   final String statName;
   // final String name;
-  final Map json;
-  const Stat({super.key, required this.statName, required this.json});
+  final Map character;
+  const Stat({super.key, required this.statName, required this.character});
   
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      child: Text(json["stats"][statName].toString())
+      child: Text(character["stats"][statName].toString())
     );
   }
 }
