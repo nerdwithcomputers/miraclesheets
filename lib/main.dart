@@ -34,7 +34,7 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String char = File('lib/assets/sample-char/main.json').readAsStringSync();
+    String char = File('lib/assets/sample-char/artificer/main.json').readAsStringSync();
     Map character = jsonDecode(char);
     String classes = "";
     var level = 0;
