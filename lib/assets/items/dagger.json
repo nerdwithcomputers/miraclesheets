@@ -1,0 +1,8 @@
+{
+  "name":"dagger",
+  "type":"weapon;finesse",
+  "stats":{
+    "toHit":1
+  },
+  "description":"stabby-stab"
+}

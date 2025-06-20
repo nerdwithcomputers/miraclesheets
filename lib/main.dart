@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
       ),
       home: const Center(
         child: HomeApp()
-      )
+      ),
     );
   }
 }
@@ -36,14 +36,17 @@ class HomeApp extends StatelessWidget {
     String char = File('lib/assets/sample-char/main.json').readAsStringSync();
     Map character = jsonDecode(char);
     return Scaffold(
-      body: Row(
-        children: [
-          Column(
-            children: [
-              Statbar(json: character)
-            ],
-          )
-        ],
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+            Column(
+              children: [
+                Statbar(json: character)
+              ],
+            )
+          ],
+        )
       ),
       appBar: AppBar(
         title: Text(character["name"]),
@@ -85,7 +88,7 @@ class HomeApp extends StatelessWidget {
             child: const Text("Notes")
           ),
         ],
-      ),
+      )
     );
   }       
 }

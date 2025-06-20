@@ -1,5 +1,15 @@
 {
   "name":"dhampir",
+  "type":"humanoid",
+  "asi":{
+    "any":[2,1],
+    "str":0,
+    "dex":0,
+    "con":0,
+    "int":0,
+    "wis":0,
+    "cha":0
+  },
   "features":{
     "1": [],
     "2": [],

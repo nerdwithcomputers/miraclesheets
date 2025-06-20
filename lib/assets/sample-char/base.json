@@ -1,16 +1,16 @@
 {
-  "name": "Percival Latian",
+  "name":"",
   "class":[
-    "artificer;1"
+    "none;1"
   ],
-  "race":"dhampir",
+  "race":"",
   "stats":{
-    "str":7,
-    "dex":16,
-    "con":12,
-    "int":17,
-    "wis":14,
-    "cha":14
+    "str":0,
+    "dex":0,
+    "con":0,
+    "int":0,
+    "wis":0,
+    "cha":0
   },
   "asi":{
     "str":0,
@@ -21,16 +21,7 @@
     "cha":0
   },
   "features":[],
-  "inventory":[
-    {
-      "name":"dagger",
-      "type":"weapon;finesse",
-      "stats":{
-        "toHit":1
-      },
-      "description":"stabby-stab"
-    }
-  ],
+  "inventory":[],
   "spellSlots":{
     "1":2,
     "2":0,
