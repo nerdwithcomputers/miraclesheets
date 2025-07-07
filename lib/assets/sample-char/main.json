@@ -7,12 +7,12 @@
   ],
   "race":"dhampir",
   "stats":{
-    "str":7,
-    "dex":16,
-    "con":12,
-    "int":17,
-    "wis":14,
-    "cha":14
+    "Strength":     7,
+    "Dexterity":    16,
+    "Constitution": 12,
+    "Intelligence": 17,
+    "Wisdom":       14,
+    "Charisma":     3
   },
   "asi":{
     "str":0,

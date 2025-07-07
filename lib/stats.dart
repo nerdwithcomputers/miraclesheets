@@ -10,35 +10,23 @@ class Statbar extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: const Column(
+          child: Column(
             children: [
-              Text('Intelligence'),
-              Text('Constitution'),
-              Text('Dexterity'),
-              Text('Wisdom'),
-              Text('Charisma'),
-              Text('Strength')
+              for(var stat in character["stats"].keys)
+                Text(stat)
             ],
           ),
         ),
         Column(
           children: [
-            Modifier(character: character, statName: "int"),
-            Modifier(character: character, statName: "con"),
-            Modifier(character: character, statName: "dex"),
-            Modifier(character: character, statName: "wis"),
-            Modifier(character: character, statName: "cha"),
-            Modifier(character: character, statName: "str")
+            for(var stat in character["stats"].values) 
+              Modifier(character: character, statName: stat)
           ]
         ),
         Column(
           children: [
-            Stat(statName: "int", character: character),
-            Stat(statName: "con", character: character),
-            Stat(statName: "dex", character: character),
-            Stat(statName: "wis", character: character),
-            Stat(statName: "cha", character: character),
-            Stat(statName: "str", character: character),
+            for(var stat in character["stats"].keys)
+              Stat(character: character, statName: stat)
           ],
         ),
       ]
@@ -48,13 +36,19 @@ class Statbar extends StatelessWidget {
 
 class Modifier extends StatelessWidget {
   final Map character;
-  final String statName;
+  final int statName;
   const Modifier({super.key, required this.character, required this.statName});
 
   @override
   Widget build(BuildContext context) {
-    var mod = ((character["stats"][statName]-10)/2).toInt();
-    var modifier = mod >= 0 ? "+$mod" : "$mod";
+    // rounding actually sucks
+    var diff = statName - 10;
+    var sign = diff<0 ? "-" : "+";
+    if(((diff%2) != 0) && (sign=="-")){
+      diff -= 1;
+    }
+    var mod = diff.abs() ~/ 2;
+    var modifier = "$sign$mod";
     return Container(
       child: Text(modifier),
     );
@@ -62,6 +56,7 @@ class Modifier extends StatelessWidget {
 }
 
 class Stat extends StatelessWidget {
+  // name of stat
   final String statName;
   // final String name;
   final Map character;

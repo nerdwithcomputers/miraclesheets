@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:miraclesheets/stats.dart';
 
 
 void main() {
-  
   runApp(const MainApp());
 }
 
@@ -34,7 +32,7 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String char = File('lib/assets/sample-char/artificer/main.json').readAsStringSync();
+    String char = File('lib/assets/sample-char/main.json').readAsStringSync();
     Map character = jsonDecode(char);
     String classes = "";
     var level = 0;
@@ -50,9 +48,22 @@ class HomeApp extends StatelessWidget {
           children: [
             Column(
               children: [
-                Statbar(character: character)
+                const Text("stats"),
+                const Spacer(),
+                Statbar(character: character),
+                const Spacer(),
+                const Spacer(),
+                const Spacer(),
               ],
-            )
+            ),
+            const Spacer(),
+            Column(
+              children: [
+                const Text("actions"),
+                
+              ],
+            ),
+            const Spacer()
           ],
         )
       ),
