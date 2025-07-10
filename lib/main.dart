@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:miraclesheets/actions.dart';
 import 'package:miraclesheets/stats.dart';
 
 
@@ -60,7 +61,7 @@ class HomeApp extends StatelessWidget {
             Column(
               children: [
                 const Text("actions"),
-                
+                ActionBar(character: character),
               ],
             ),
             const Spacer()
