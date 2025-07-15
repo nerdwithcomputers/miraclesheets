@@ -22,6 +22,28 @@
     "wis":0,
     "cha":0
   },
+  "actions":[
+    {
+      "name":"bite",
+      "type":"attack",
+      "bonus":"Constitution",
+      "damage":"1d4",
+      "subaction":{
+        "choice":[
+          {
+            "name":"Heal",
+            "type":"heal;self",
+            "heal":"damage"
+          },
+          {
+            "name":"Bonus",
+            "type":"buff",
+            "targets":["abilityChecks","attackRolls"]
+          }
+        ]
+      }
+    }
+  ],
   "features":[],
   "inventory":[
     {

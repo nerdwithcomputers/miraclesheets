@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:miraclesheets/actions.dart';
 import 'package:miraclesheets/stats.dart';
 
+List<Widget> chatList = [];
 
 void main() {
   runApp(const MainApp());
@@ -21,16 +22,21 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.dark)
       ),
-      home: const Center(
+      home: Center(
         child: HomeApp()
       ),
     );
   }
 }
 
-class HomeApp extends StatelessWidget {
+class HomeApp extends StatefulWidget {
   const HomeApp({super.key});
 
+  @override
+  State<HomeApp> createState() => HomeState();
+}
+
+class HomeState extends State<HomeApp>{
   @override
   Widget build(BuildContext context) {
     String char = File('lib/assets/sample-char/main.json').readAsStringSync();
@@ -114,7 +120,13 @@ class HomeApp extends StatelessWidget {
             child: const Text("Notes")
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          children: chatList
+        ),
       )
     );
-  }       
+  }
 }
