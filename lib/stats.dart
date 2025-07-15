@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:miraclesheets/dice.dart';
+import 'package:miraclesheets/main.dart';
 
 class Statbar extends StatelessWidget {
   final Map character;
-  const Statbar({super.key, required this.character});
+  const Statbar({
+    super.key,
+    required this.character
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +24,13 @@ class Statbar extends StatelessWidget {
         ),
         Column(
           children: [
-            for(var stat in character["stats"].values) 
-              Modifier(character: character, statName: stat)
+            for(int stat in character["stats"].values)
+              Roll(
+                character: character,
+                sides: 20,
+                statMod: stat.parseModInt(),
+                text: stat.parseModString()
+              )
           ]
         ),
         Column(
@@ -34,26 +44,6 @@ class Statbar extends StatelessWidget {
   }
 }
 
-class Modifier extends StatelessWidget {
-  final Map character;
-  final int statName;
-  const Modifier({super.key, required this.character, required this.statName});
-
-  @override
-  Widget build(BuildContext context) {
-    // rounding actually sucks
-    var diff = statName - 10;
-    var sign = diff<0 ? "-" : "+";
-    if(((diff%2) != 0) && (sign=="-")){
-      diff -= 1;
-    }
-    var mod = diff.abs() ~/ 2;
-    var modifier = "$sign$mod";
-    return Container(
-      child: Text(modifier),
-    );
-  }
-}
 
 class Stat extends StatelessWidget {
   // name of stat

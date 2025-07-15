@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
+import 'package:miraclesheets/main.dart';
 
 class ActionBar extends StatelessWidget {
   final Map character;
@@ -49,7 +50,18 @@ class ActionState extends State<Action>{
           Text(widget.actionName),
           if(!state) Column(
             children: [
-              Roll(character: widget.character, sides: 20, stat: widget.bonus),
+              if(widget.bonus.validInt()) 
+                Roll(
+                  character: widget.character,
+                  sides: 20,
+                  statMod: widget.bonus.parseInt()
+                ),
+              if(!widget.bonus.validInt())
+                Roll(
+                  character: widget.character,
+                  sides: 20,
+                  statName: widget.bonus
+                ),
               Text(" ${widget.description.toString()}")
             ],
           )
