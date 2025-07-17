@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:math';
-
 import 'package:miraclesheets/main.dart';
+import 'package:miraclesheets/extensions.dart';
+
 class Roll extends StatelessWidget{
   final Map character;
   final String? statName;
@@ -22,7 +22,7 @@ class Roll extends StatelessWidget{
   
   @override
   Widget build(BuildContext context) {
-    int add = character["stats"][statName].parseModInt()??(statMod??0);
+    int add = statMod ?? (character["stats"][statName] as int).parseModInt();
     var stringAdd = add>0 ? "+$add":"$add";
     return InkWell(
       child: Text(text??"${times??1}d$sides $stringAdd"),

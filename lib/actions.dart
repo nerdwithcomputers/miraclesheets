@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
-import 'package:miraclesheets/main.dart';
+import 'package:miraclesheets/extensions.dart';
 
 class ActionBar extends StatelessWidget {
   final Map character;
@@ -13,10 +13,16 @@ class ActionBar extends StatelessWidget {
         Action(
           character: character,
           actionName: "unarmed strike",
-          bonus: "+2",
-          damage: "",
+          dice: "0",
           description: "punch or kick or something",
-        )
+        ),
+        for(var entry in character["actions"])
+          Action(
+            character: character,
+            actionName: entry["name"],
+            dice: entry["bonus"],
+            description: entry["description"],
+          )
       ],
     );
   }
@@ -25,15 +31,13 @@ class ActionBar extends StatelessWidget {
 class Action extends StatefulWidget {
   final Map character;
   final String actionName;
-  final String bonus;
-  final String? damage;
+  final String dice;
   final String? description;
   const Action({
     super.key,
     required this.character,
     required this.actionName,
-    required this.bonus,
-    this.damage,
+    required this.dice,
     this.description
   });
   @override
@@ -42,6 +46,7 @@ class Action extends StatefulWidget {
 
 class ActionState extends State<Action>{
   bool state = true;
+  
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -50,17 +55,17 @@ class ActionState extends State<Action>{
           Text(widget.actionName),
           if(!state) Column(
             children: [
-              if(widget.bonus.validInt()) 
+              if(widget.dice.validInt()) 
                 Roll(
                   character: widget.character,
                   sides: 20,
-                  statMod: widget.bonus.parseInt()
+                  statMod: widget.dice.parseInt()
                 ),
-              if(!widget.bonus.validInt())
+              if(!widget.dice.validInt())
                 Roll(
                   character: widget.character,
                   sides: 20,
-                  statName: widget.bonus
+                  statName: widget.dice
                 ),
               Text(" ${widget.description.toString()}")
             ],

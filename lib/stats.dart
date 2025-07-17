@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
-import 'package:miraclesheets/main.dart';
+import 'package:miraclesheets/extensions.dart';
 
 class Statbar extends StatelessWidget {
   final Map character;
