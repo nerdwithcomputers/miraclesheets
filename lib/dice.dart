@@ -25,7 +25,7 @@ class Roll extends StatelessWidget{
     int add = statMod ?? (character["stats"][statName] as int).parseModInt();
     var stringAdd = add>0 ? "+$add":"$add";
     return InkWell(
-      child: Text(text??"${times??1}d$sides $stringAdd"),
+      child: Text(text??"${times??1}d$sides $stringAdd  "),
       onTap: () {
         List<int> results = [];
         for(var i=times??1; i>0; i--){
@@ -44,6 +44,14 @@ class Roll extends StatelessWidget{
         }
 
         chatList.add(Text(retResults));
+        Navigator.push(context, MaterialPageRoute(
+          builder: (BuildContext context){
+            return Container(
+              decoration: BoxDecoration(),
+              child: Text(retResults),
+            );
+          }
+        ));
       },
     );
   }

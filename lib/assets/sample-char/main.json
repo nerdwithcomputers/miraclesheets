@@ -22,28 +22,25 @@
     "wis":0,
     "cha":0
   },
-  "actions":[
-    {
-      "name":"bite",
+  "actions":{
+    "Bite":{
       "type":"attack",
-      "bonus":"Constitution",
-      "damage":"1d4",
-      "subaction":{
-        "choice":[
-          {
-            "name":"Heal",
+      "dice":["1d20+Constitution","1d4+0"],
+      "description":"you bite a creature that is not a construct or undead, extracting a bit of whatever essence you hunger for. empower yourself in one of two ways: ",
+      "subactions":{
+        "choice":{
+          "Heal":{
             "type":"heal;self",
             "heal":"damage"
           },
-          {
-            "name":"Bonus",
+          "Bonus":{
             "type":"buff",
             "targets":["abilityChecks","attackRolls"]
           }
-        ]
+        }
       }
     }
-  ],
+  },
   "features":[],
   "inventory":[
     {

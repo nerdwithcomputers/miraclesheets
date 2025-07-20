@@ -17,7 +17,7 @@ class Statbar extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-              for(var stat in character["stats"].keys)
+              for(String stat in character["stats"].keys)
                 Text(stat)
             ],
           ),
