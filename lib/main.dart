@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.dark)
       ),
-      // ignore: prefer_const_constructors
+      
       home: const Center(
         child: HomeApp()
       ),
