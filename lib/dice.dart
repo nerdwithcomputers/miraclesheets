@@ -47,8 +47,13 @@ class Roll extends StatelessWidget{
         Navigator.push(context, MaterialPageRoute(
           builder: (BuildContext context){
             return Container(
-              decoration: BoxDecoration(),
-              child: Text(retResults),
+              decoration: const BoxDecoration(),
+              child: Column(
+                children: [
+                  Text(retResults),
+                  ElevatedButton(onPressed: ()=>Navigator.pop(context), child: const Text("dismiss"))
+                ],
+              )
             );
           }
         ));

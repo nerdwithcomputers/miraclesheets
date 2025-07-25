@@ -28,15 +28,28 @@
       "dice":["1d20+Constitution","1d4+0"],
       "description":"you bite a creature that is not a construct or undead, extracting a bit of whatever essence you hunger for. empower yourself in one of two ways: ",
       "subactions":{
-        "choice":{
-          "Heal":{
-            "type":"heal;self",
-            "heal":"damage"
-          },
-          "Bonus":{
-            "type":"buff",
-            "targets":["abilityChecks","attackRolls"]
-          }
+        "Heal":{
+          "type":"heal;self",
+          "heal":"damage"
+        },
+        "Bonus":{
+          "type":"buff",
+          "targets":["abilityChecks","attackRolls"]
+        }
+      }
+    },
+    "Bites":{
+      "type":"attack",
+      "dice":["1d20+Constitution","1d4+0"],
+      "description":"you bite a creature that is not a construct or undead, extracting a bit of whatever essence you hunger for. empower yourself in one of two ways: ",
+      "subactions":{
+        "Heal":{
+          "type":"heal;self",
+          "heal":"damage"
+        },
+        "Bonus":{
+          "type":"buff",
+          "targets":["abilityChecks","attackRolls"]
         }
       }
     }
