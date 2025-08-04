@@ -1,7 +1,7 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
 import 'package:miraclesheets/extensions.dart';
+import 'package:miraclesheets/subactions.dart';
 
 class ActionBar extends StatelessWidget {
   final Map character;
@@ -44,17 +44,13 @@ class ActionState extends State<Action>{
   bool state = true;
   @override
   Widget build(BuildContext context) {
-    bool chain = false;
-    if(widget.character["actions"].containsKey(widget.name)){
-      chain = true;
-    }
-    
-    log(widget.name);
+    // log(widget.name);
     return Container(
       decoration: BoxDecoration(
         border: Border.all(width: 2, color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.elliptical(20,10))
       ),
+      constraints: const BoxConstraints(maxWidth: 500),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Column(
         children: [
@@ -64,8 +60,11 @@ class ActionState extends State<Action>{
                 fontSize: 30,
                 fontWeight: FontWeight.w600
               )),
+              const Spacer(),
               InkWell(
-                child: const Text("V"),
+                child: Text(state?"V":"Ʌ", style: const TextStyle(
+                  fontSize: 30
+                )),
                 onTap: ()=> setState((){
                   state = !state;
                 }),
@@ -91,18 +90,15 @@ class ActionState extends State<Action>{
                   ),
             ]),
             Text(widget.description.toString()),
-            if(chain)
-              for(MapEntry action in widget.character["actions"][widget.name]["subactions"].entries)
-                Action(
-                  character: widget.character,
-                  name: action.key,
-                  dice: const ["1d20+0"],
-                  
-                )
+            for(MapEntry subaction in widget.character["actions"][widget.name]["subactions"].entries)
+              SubAction(
+                character: widget.character,
+                name: subaction.key,
+                description: subaction.value["description"]
+              )
           ]
         ]
-      )
-    );
-    
+      ),
+    ); 
   }
 }

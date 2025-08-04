@@ -48,6 +48,7 @@ class Roll extends StatelessWidget{
           builder: (BuildContext context){
             return Container(
               decoration: const BoxDecoration(),
+              constraints: BoxConstraints(maxWidth: 100, maxHeight: 100),
               child: Column(
                 children: [
                   Text(retResults),
