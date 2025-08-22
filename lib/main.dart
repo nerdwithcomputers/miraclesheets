@@ -65,14 +65,7 @@ class HomeState extends State<HomeApp>{
                 const Spacer(),
               ],
             ),
-            const Spacer(),
-            Column(
-              children: [
-                const Text("actions"),
-                ActionBar(character: character),
-              ],
-            ),
-            const Spacer()
+            ActionBar(character: character)
           ],
         )
       ),
