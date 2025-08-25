@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/actions.dart';
+import 'package:miraclesheets/features.dart';
 import 'package:miraclesheets/stats.dart';
 
 List<Widget> chatList = [];
@@ -24,21 +25,19 @@ class MainApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red, brightness: Brightness.dark)
       ),
       
-      home: const Center(
-        child: HomeApp()
-      ),
+      home: const HomePage()
     );
   }
 }
 
-class HomeApp extends StatefulWidget {
-  const HomeApp({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeApp> createState() => HomeState();
+  State<HomePage> createState() => HomeState();
 }
 
-class HomeState extends State<HomeApp>{
+class HomeState extends State<HomePage>{
   @override
   Widget build(BuildContext context) {
     String char = File('lib/assets/sample-char/main.json').readAsStringSync();
@@ -54,6 +53,7 @@ class HomeState extends State<HomeApp>{
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
+          // shrinkWrap: true,
           children: [
             Column(
               children: [
@@ -65,10 +65,12 @@ class HomeState extends State<HomeApp>{
                 const Spacer(),
               ],
             ),
-            ActionBar(character: character)
+            Descriptions(character:character),
+            ActionBar(character:character)
           ],
         )
       ),
+      
       appBar: AppBar(
         title: Row(
           children: [

@@ -4,9 +4,7 @@
   "maxHp":10,
   "tempHp":0,
   "class":[
-    "artificer;2",
-    "rogue;3",
-    "fighter;2"
+    "artificer;2"
   ],
   "race":"dhampir",
   "stats":{
@@ -44,7 +42,11 @@
       }
     }
   },
-  "features":[],
+  "features":{
+    "Darkvision":"darkn-I HAVE DARKVISION",
+    "Spider Climb":"creepy dhampir shit(tm)",
+    "Vampiric Hunger":"Every dhampir knows a thirst slaked only by the living. This desire is a whisper in the mind, a tinge to the sight, a reflex constantly needing to be suppressed. Those who overindulge their thirst risk losing control and forever viewing others as prey. Those who resist might find exceptional ways of controlling their urges or suppress it through constant, molar-grinding restraint. In any case, temptation haunts dhampirs, and circumstances conspire to give them endless reasons to indulge.\nWhile many dhampirs thirst for blood, your character might otherwise gain sustenance from the living. Roll on or choose an option from the Dhampir Hungers table to determine what tempts your character to feed."
+  },
   "inventory":[
     {
       "name":"dagger",

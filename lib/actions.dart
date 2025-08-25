@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
 import 'package:miraclesheets/extensions.dart';
@@ -15,20 +13,17 @@ class ActionBar extends StatefulWidget {
 class ActionBarState extends State<ActionBar>{
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: (MediaQuery.sizeOf(context).width/4),
+    return Expanded(
       child: ListView(
-        // shrinkWrap: true,
         children: [
-          const Text("Actions:"),
-          const Spacer(),
-          for(MapEntry action in widget.character["actions"].entries)
-            Action(
+          ...widget.character["actions"].keys.toList().map(
+            (entry)=> Action(
               character: widget.character,
-              name: action.key,
-              dice: action.value["dice"],
-              description: action.value["description"],
+              name: entry,
+              dice: widget.character["actions"][entry]["dice"],
+              description: widget.character["actions"][entry]["description"],
             )
+          )
         ],
       )
     );
