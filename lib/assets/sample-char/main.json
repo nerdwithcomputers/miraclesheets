@@ -26,7 +26,8 @@
   "journal":{
     "entry 1":{
       "main":"a test entry",
-      "subtitle": "a test section"
+      "subtitle": "a test section",
+      "subtitle2": "another thing"
     }
   },
   "actions":{
