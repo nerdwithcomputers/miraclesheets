@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:miraclesheets/actions.dart';
 import 'package:miraclesheets/features.dart';
+import 'package:miraclesheets/journal.dart';
 import 'package:miraclesheets/stats.dart';
 
 List<Widget> chatList = [];
@@ -59,14 +60,15 @@ class HomeState extends State<HomePage>{
               children: [
                 const Text("stats"),
                 const Spacer(),
-                Statbar(character: character),
+                Statbar(character),
                 const Spacer(),
                 const Spacer(),
                 const Spacer(),
               ],
             ),
-            Descriptions(character:character),
-            ActionBar(character:character)
+            ActionBar(character),
+            FeatureDesciption(character),
+            JournalScreen(character: character),
           ],
         )
       ),

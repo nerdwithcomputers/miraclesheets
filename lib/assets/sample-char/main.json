@@ -23,6 +23,12 @@
     "wis":0,
     "cha":0
   },
+  "journal":{
+    "entry 1":{
+      "main":"a test entry",
+      "subtitle": "a test section"
+    }
+  },
   "actions":{
     "Bite":{
       "type":"attack",

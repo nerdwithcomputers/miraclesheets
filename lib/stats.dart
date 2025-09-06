@@ -2,16 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:miraclesheets/dice.dart';
 import 'package:miraclesheets/extensions.dart';
 
-class Statbar extends StatelessWidget {
-  final Map character;
-  const Statbar({
-    super.key,
-    required this.character
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
+Widget Statbar(Map character){
+  return Row(
       children: [
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -41,7 +33,6 @@ class Statbar extends StatelessWidget {
         ),
       ]
     );
-  }
 }
 
 

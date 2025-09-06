@@ -3,31 +3,21 @@ import 'package:miraclesheets/dice.dart';
 import 'package:miraclesheets/extensions.dart';
 import 'package:miraclesheets/subactions.dart';
 
-class ActionBar extends StatefulWidget {
-  final Map character;
-  const ActionBar({super.key, required this.character});
-  @override
-  State<ActionBar> createState() => ActionBarState();
-}
-
-class ActionBarState extends State<ActionBar>{
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
+Widget ActionBar(Map character){
+  return Expanded(
       child: ListView(
         children: [
-          ...widget.character["actions"].keys.toList().map(
-            (entry)=> Action(
-              character: widget.character,
-              name: entry,
-              dice: widget.character["actions"][entry]["dice"],
-              description: widget.character["actions"][entry]["description"],
+          ...character["actions"].entries.toList().map(
+            (MapEntry entry)=> Action(
+              character: character,
+              name: entry.key,
+              dice: entry.value["dice"],
+              description: entry.value["description"],
             )
           )
         ],
       )
     );
-  }
 }
 
 class Action extends StatefulWidget {
