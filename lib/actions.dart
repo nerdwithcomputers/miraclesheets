@@ -4,7 +4,7 @@ import 'package:miraclesheets/extensions.dart';
 import 'package:miraclesheets/subactions.dart';
 
 Widget ActionBar(Map character){
-  return Expanded(
+  return Flexible(
       child: ListView(
         children: [
           ...character["actions"].entries.toList().map(

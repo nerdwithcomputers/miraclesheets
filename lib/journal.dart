@@ -1,4 +1,5 @@
 // import 'dart:ffi';
+import 'package:miraclesheets/popups.dart';
 
 import 'package:flutter/material.dart';
 
@@ -14,20 +15,22 @@ class JournalScreen extends StatefulWidget{
 
 class JournalState extends State<JournalScreen>{
   Widget buildDesc(Map input){
-    List<InlineSpan> returns = [];
+    List<Widget> returns = [];
     for (MapEntry subheading in input.entries.toList()){
       if(subheading.key != "main"){
         returns.add(
-          TextSpan(
-            text: " ${subheading.key}-\n",
+          Text(
+            "  ${subheading.key}-",
+            textAlign: TextAlign.left,
             style: const TextStyle(
-              fontWeight: FontWeight.w100
+              fontWeight: FontWeight.w300
             )
           )
         );
         returns.add(
-          TextSpan(
-            text: "  ${subheading.value}\n",
+          Text(
+            "${subheading.value}",
+            textAlign: TextAlign.left,
             style: const TextStyle(
               fontWeight: FontWeight.w100
             )
@@ -35,34 +38,54 @@ class JournalState extends State<JournalScreen>{
         );
       }
     }
-    return RichText(
-      text: TextSpan(
-        text: "${input["main"]}\n",
-        style: DefaultTextStyle.of(context).style,
-        children: returns
-      )
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text(input["main"])
+        ),
+        ...returns.map(
+          (e)=>Align(
+            alignment: const Alignment(-0.999,0),
+            child: e
+          )
+        )
+      ],
     );
   }
   
   @override
   Widget build(BuildContext context){
-    return Expanded(
-      child: 
-        ListView(
-          children: [
-            ...widget.character["journal"].entries.toList().map(
-              (entry)=> ListTile(
-                title: Text(
-                  entry.key,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w800
-                  ),
-                ),
-                subtitle: buildDesc(entry.value),
-              )
+    return Flexible(
+      child: Column(
+        children: [
+          ElevatedButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute<void>(
+                builder: (context)=> const AddEntry()
+              ));
+            },
+            child: const Text("+")
+          ),
+          Flexible(
+            child: ListView(
+              children: [
+                ...widget.character["journal"].entries.toList().map(
+                  (entry)=> ListTile(
+                    title: Text(
+                      entry.key,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w800
+                      ),
+                    ),
+                    subtitle: buildDesc(entry.value),
+                  )
+                )
+              ],
             )
-          ],
-        )
+          ), // WAAAARGHHH
+        ]
+      )
     );
   }
 }

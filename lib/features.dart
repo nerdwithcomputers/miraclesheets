@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget FeatureDesciption(Map character){
-  return Expanded(
+  return Flexible(
     child: ListView(
       children: [
         ...character["features"].keys.toList().map((name)=>
