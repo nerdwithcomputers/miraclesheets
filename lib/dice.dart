@@ -23,9 +23,9 @@ class Roll extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     int add = statMod ?? (character["stats"][statName] as int).parseModInt();
-    var stringAdd = add>0 ? "+$add":"$add";
+    var stringAdd = add>=0 ? "+$add":"$add";
     return InkWell(
-      child: Text(text??"${times??1}d$sides $stringAdd  "),
+      child: Text(text??"${times??1}d$sides$stringAdd"),
       onTap: () {
         List<int> results = [];
         for(var i=times??1; i>0; i--){
@@ -44,20 +44,23 @@ class Roll extends StatelessWidget{
         }
 
         chatList.add(Text(retResults));
-        Navigator.push(context, MaterialPageRoute(
-          builder: (BuildContext context){
-            return Container(
-              decoration: const BoxDecoration(),
-              constraints: BoxConstraints(maxWidth: 100, maxHeight: 100),
-              child: Column(
-                children: [
-                  Text(retResults),
-                  ElevatedButton(onPressed: ()=>Navigator.pop(context), child: const Text("dismiss"))
-                ],
+        showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: Text('Roll Results:'),
+            // surfaceTintColor: Colors.white,
+            // elevation: 0,
+            // backgroundColor: MaterialType.transparency,
+            content: Text(retResults),
+            actions: [
+              TextButton(
+                onPressed: ()=>Navigator.pop(context),
+                child: const Text("close")
               )
-            );
-          }
-        ));
+            ]
+          )
+        );
+            
       },
     );
   }

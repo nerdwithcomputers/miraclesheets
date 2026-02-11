@@ -65,20 +65,24 @@ class ActionState extends State<Action>{
         if(!state) ...[
           Row( children: [
             for(String entry in widget.dice)
-              if(entry.split("+")[1].validInt())
+              if(entry.split("+")[1].validInt()) ...[
                 Roll(
                   character: widget.character,
                   times: entry.split("d")[0].parseInt(),
                   sides: entry.split(RegExp("[d+]"))[1].parseInt(),
                   statMod: entry.split("+")[1].parseInt(),
-                )
-              else 
+                ),
+                Spacer()
+              ]
+              else ...[
                 Roll(
                   character: widget.character,
                   times: entry.split("d")[0].parseInt(),
                   sides: entry.split(RegExp("[d+]"))[1].parseInt(),
                   statName: entry.split("+")[1],
                 ),
+                Spacer()
+              ]
           ]),
           Text(widget.description.toString()),
           for(MapEntry subaction in widget.character["actions"][widget.name]["subactions"].entries)

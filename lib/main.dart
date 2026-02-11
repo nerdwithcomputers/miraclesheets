@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:miraclesheets/extensions.dart';
 import 'package:miraclesheets/actions.dart';
 import 'package:miraclesheets/features.dart';
 import 'package:miraclesheets/journal.dart';
@@ -33,7 +34,6 @@ class MainApp extends StatelessWidget {
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => HomeState();
 }

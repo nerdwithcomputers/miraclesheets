@@ -16,12 +16,12 @@
     "Charisma":     3
   },
   "asi":{
-    "str":0,
-    "dex":0,
-    "con":0,
-    "int":0,
-    "wis":0,
-    "cha":0
+    "Strength":1,
+    "Dexterity":0,
+    "Constitution":0,
+    "Intelligence":0,
+    "Wisdom":0,
+    "Charisma":0
   },
   "journal":{
     "entry 1":{
@@ -31,6 +31,23 @@
     }
   },
   "actions":{
+    "Unarmed strike":{
+      "type":"attack",
+      "dice":["1d20+Constitution","1d4+0"],
+      "description":"Your fanged bite is a natural weapon, which counts as a simple melee weapon with which you are proficient. You add your Constitution modifier, instead of your Strength modifier, to the attack and damage rolls when you attack with this bite. It deals 1d4 piercing damage on a hit. While you are missing half or more of your hit points, you have advantage on attack rolls you make with this bite. When you attack with this bite and hit a creature that isn’t a Construct or an Undead, you can empower yourself in one of the following ways of your choice:\n",
+      "subactions":{
+        "Heal": {
+          "type":"heal;self",
+          "heal":"damage",
+          "description": "Your fanged bite is a natural weapon, which counts as a simple melee weapon with which you are proficient. You add your Constitution modifier, instead of your Strength modifier, to the attack and damage rolls when you attack with this bite. It deals 1d4 piercing damage on a hit. While you are missing half or more of your hit points, you have advantage on attack rolls you make with this bite."
+        },
+        "Bonus":{
+          "type":"buff",
+          "description": "You gain a bonus to the next ability check or attack roll you make; the bonus equals the piercing damage dealt by the bite.",
+          "targets":["abilityChecks","attackRolls"]
+        }
+      }
+    },
     "Bite":{
       "type":"attack",
       "dice":["1d20+Constitution","1d4+0"],

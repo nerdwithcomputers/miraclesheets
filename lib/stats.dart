@@ -16,12 +16,12 @@ Widget Statbar(Map character){
         ),
         Column(
           children: [
-            for(int stat in character["stats"].values)
+            for(MapEntry<String,dynamic> stat in character["stats"].entries)
               Roll(
                 character: character,
                 sides: 20,
-                statMod: stat.parseModInt(),
-                text: stat.parseModString()
+                statMod: ((stat.value as int) + (character["asi"][stat.key] as int)).parseModInt(),
+                text: (stat.value as int).parseModString()
               )
           ]
         ),
