@@ -60,17 +60,9 @@ class JournalState extends State<JournalScreen>{
       child: Column(
         children: [
           ElevatedButton(
-            onPressed: showDialog(
-              context: context,
-              builder: (BuildContext context) => const AddEntry()
-            ),
-            /*
-            (){
-              Navigator.push(context, MaterialPageRoute<void>(
-                builder: (context)=> const AddEntry()
-              ));
-            },
-            */
+            onPressed: (){
+              addEntry(context);
+            }, 
             child: const Text("+")
           ),
           Flexible(
