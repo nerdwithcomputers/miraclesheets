@@ -5,18 +5,35 @@ addEntry(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text("add entry"),
+        title:  TextField(
+          maxLines: 1,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Title"
+          )
+        ),
         content: TextField(
-          maxLines: null
+          maxLines: null,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: "Body"
+          )
         ),
         actions: [
           ElevatedButton(
-            onPressed: (){
-              
-            }
+            onPressed:(){
+              Navigator.of(context).pop(context);
+            },
+            child: const Text("cancel")
+          ),
+          ElevatedButton(
+            onPressed:(){
+              Navigator.of(context).pop(context);
+            },
+            child: const Text("submit")
           )
         ]
-      )
+      );
     } 
-  )
+  );
 }
